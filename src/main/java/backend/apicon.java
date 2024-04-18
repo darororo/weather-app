@@ -8,7 +8,29 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class apicon {
-     public static JSONObject getCountry(String counName) {
+    // TODO create class methods to avoid re-accessing the api server
+    
+    private String CountryName;
+    private JSONObject Country;
+    private JSONObject Weather;
+    
+    // Create an object to avoid re-accessing the api server
+    public apicon (String name) {
+        CountryName = name;
+        Country = getCountry(CountryName);
+        Weather = getWeather(Country);        
+    }
+    
+    public double currentTemp () throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        
+        JSONObject current = (JSONObject) Weather.get("current");
+        double temp = (double) current.get("temperature_2m");
+        
+        return temp;
+    }
+    
+    public static JSONObject getCountry(String counName) {
         JSONObject country = null;
         
          try {
@@ -64,7 +86,7 @@ public class apicon {
                     + "&longitude=" + latlng.get(1)
                     + "&current=temperature_2m,precipitation"
                     + "&hourly=temperature_2m"
-                    + "&daily=weather_code,temperature_2m_max,precipitation_hours"
+                    + "&daily=weather_code,apparent_temperature_max,precipitation_hours"
                     + "&timezone=auto");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -112,16 +134,34 @@ public class apicon {
     
     public static double currentTemp (String countryName) throws Exception {
         JSONObject country = getCountry(countryName);
-        if (country == null) {
-            throw new Exception("ERROR " + countryName + " not found.");
-//            System.out.println( "ERROR: " + countryName + " not found");
-//            return 0;
-        }
+        if (country == null) { throw new Exception("ERROR " + countryName + " not found."); }
         
         JSONObject weather = getWeather(country);
         JSONObject current = (JSONObject) weather.get("current");
         double temp = (double) current.get("temperature_2m");
         
         return temp;
+    }
+    
+    public static JSONArray getHourlyForecast (String countryName) throws Exception {
+        JSONObject country = getCountry(countryName);
+        if (country == null) { throw new Exception("ERROR " + countryName + " not found."); }
+        
+        JSONObject weather = getWeather(country);
+        JSONObject hourly =  (JSONObject) weather.get("hourly");
+        JSONArray forecast = (JSONArray) hourly.get("temperature_2m");
+       
+        return forecast;
+    }
+    
+    public static JSONArray getDailyForecast (String countryName) throws Exception {
+        JSONObject country = getCountry(countryName);
+        if (country == null) { throw new Exception("ERROR " + countryName + " not found."); }
+        
+        JSONObject weather = getWeather(country);
+        JSONObject daily =  (JSONObject) weather.get("daily");
+        JSONArray forecast = (JSONArray) daily.get("apparent_temperature_max");
+       
+        return forecast;
     }
 }
