@@ -110,11 +110,12 @@ public class apicon {
         return temp;
     }
     
-    public static double currentTemp (String countryName) {
+    public static double currentTemp (String countryName) throws Exception {
         JSONObject country = getCountry(countryName);
         if (country == null) {
-            System.out.println( "ERROR: " + countryName + " not found");
-            return 0;
+            throw new Exception("ERROR " + countryName + " not found.");
+//            System.out.println( "ERROR: " + countryName + " not found");
+//            return 0;
         }
         
         JSONObject weather = getWeather(country);
