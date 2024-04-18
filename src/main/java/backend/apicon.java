@@ -109,4 +109,18 @@ public class apicon {
         double temp = (double) current.get("temperature_2m");
         return temp;
     }
+    
+    public static double currentTemp (String countryName) {
+        JSONObject country = getCountry(countryName);
+        if (country == null) {
+            System.out.println( "ERROR: " + countryName + " not found");
+            return 0;
+        }
+        
+        JSONObject weather = getWeather(country);
+        JSONObject current = (JSONObject) weather.get("current");
+        double temp = (double) current.get("temperature_2m");
+        
+        return temp;
+    }
 }
