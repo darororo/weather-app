@@ -1,42 +1,34 @@
-package weather.app;
-
-import backend.apicon;
-import java.io.IOException;
+//import backend.apicon;
+//import java.io.IOException;
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.layout.Pane;
+//import javafx.application.Application;
+//import javafx.scene.Scene;
+//import javafx.stage.Stage;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.Parent;
 //import org.json.simple.JSONArray;
 //import org.json.simple.JSONObject;
-
-public class WeatherApp extends Application{
-    
-    private static Scene scene;
-
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("view-sunny"));
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(WeatherApp.class.getResource("/" + fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-   
-
-    public static void main(String[] args){
-        launch();
-        
+//
+//public class WeatherAppTest extends Application{
+//    
+//    private static Scene scene;
+//
+//    @Override
+//    public void start(Stage stage) throws IOException {
+//        scene = new Scene(loadFXML("view-sunny"), 640, 480);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//    
+//    private static Parent loadFXML(String fxml) throws IOException {
+//        String root = "E:\\java-project\\weather-app\\src\\main\\java\\frontend\\";
+//        FXMLLoader fxmlLoader = new FXMLLoader(WeatherAppTest.class.getResource( root + fxml + ".fxml"));
+//        return fxmlLoader.load();
+//    }
+//
+//    public static void main(String[] args){
+//        
 //        try {
 //            String country = "Cambodia";
 //            double temp = apicon.currentTemp(country);
@@ -54,7 +46,8 @@ public class WeatherApp extends Application{
 //            ex.printStackTrace();
 //        }
 //        
-
-    }
-
-}
+//
+//    }
+//
+//
+//}

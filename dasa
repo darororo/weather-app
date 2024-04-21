@@ -1,0 +1,71 @@
+[33mcommit 28a00ed2d8a0278af1cb494f061936d30403881c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 910c857 4de6070
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Fri Apr 19 16:06:21 2024 +0700
+
+    Merge pull request #8 from darororo/b1
+    
+    Merge b1 branch into main
+
+[33mcommit 4de607032483c12a14632707fcbfabf0283d36c6[m[33m ([m[1;31morigin/b1[m[33m, [m[1;32mb1[m[33m)[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Fri Apr 19 15:58:58 2024 +0700
+
+    move test code to test package
+
+[33mcommit fa9504ff8bd1a5fe46ece341dae97ae96fd7029a[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Fri Apr 19 00:06:45 2024 +0700
+
+    test retrieving forecast
+
+[33mcommit c7480294f8a2fa6c36b1f549096f7fb4c0d8912b[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Fri Apr 19 00:04:52 2024 +0700
+
+    apicon class: added hourlyForecast and dailyForecast functions
+
+[33mcommit 2e7d7521edd705605507c9eae370bba37c376dcf[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Thu Apr 18 15:32:45 2024 +0700
+
+    test a method from apicon class
+
+[33mcommit be8c9fe9e1be730de417a05545242125e8e197a8[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Thu Apr 18 15:26:39 2024 +0700
+
+    update currentTemp to handle exception
+
+[33mcommit df45f0848a0559d3d31ad6f37de119dddcac4402[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Thu Apr 18 12:06:13 2024 +0700
+
+    added currentTemp function in apicon class
+
+[33mcommit 507b6c998a2ff13c180e0953d9cc0bbc30020f74[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Thu Apr 18 00:25:14 2024 +0700
+
+    added backend folder
+    
+    added apicon class
+
+[33mcommit 910c8575d64ab2a2def638728f228ef9f3addbee[m
+Merge: 2969930 3d58fb4
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Wed Apr 17 23:46:54 2024 +0700
+
+    Merge branch 'main' of https://github.com/darororo/weather-app
+
+[33mcommit 29699306ea6b60d71a67ed362b2ba07d176f6bc8[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Yem Daro <100412991+darororo@users.noreply.github.com>
+Date:   Wed Apr 17 23:03:52 2024 +0700
+
+    first commit
+
+[33mcommit 3d58fb44256edd3ce803acc8211e3aff4a0995d9[m
+Author: yem daro <100412991+darororo@users.noreply.github.com>
+Date:   Thu Mar 28 22:01:03 2024 +0700
+
+    Initial commit
