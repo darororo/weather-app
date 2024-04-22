@@ -4,13 +4,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
@@ -18,35 +15,57 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class apicon {
-    // TODO create class methods to avoid re-accessing the api server
+    // TODO create object methods to avoid re-accessing the api server
     
     private String CountryName;
     private JSONObject Country;
     private JSONObject Weather;
+    private LocalDateTime CurrentDate;
     
     // Create an object to avoid re-accessing the api server
     public apicon (String name) {
         CountryName = name;
         Country = getCountry(CountryName);
-        Weather = getWeather(Country);        
+        Weather = getWeather(Country);  
+        CurrentDate = setCurrentDate();
+        
+    }
+    
+    private LocalDateTime setCurrentDate() {
+        JSONObject current = (JSONObject) Weather.get("current");
+        String time = current.get("time").toString();
+        DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime currentDate = LocalDateTime.parse(time);
+        return currentDate;
     }
     
     public String getCountryName() {
-        return CountryName;
+        String name = CountryName.substring(0, 1).toUpperCase() + CountryName.substring(1, CountryName.length());
+        return name;
     }
     
     public String getCurrentTime() {
+        LocalTime lt = CurrentDate.toLocalTime();
+        String hour = lt.format(DateTimeFormatter.ofPattern("hh:mm a"));
+        return hour;
+      
+    }
+    
+    public String getCurrentDate() {  
+        String day = CurrentDate.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM, yyyy")).toString();
+        return day;
+    }
+    
+    public String getCurrentDayOfWeek() {
         JSONObject current = (JSONObject) Weather.get("current");
         String time = current.get("time").toString();
-        System.out.println(time);
         
         DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         LocalDateTime date = LocalDateTime.parse(time);
   
-        LocalTime lt = date.toLocalTime();
-        String hour = lt.format(DateTimeFormatter.ofPattern("hh:mm a"));
+        String day = date.getDayOfWeek().toString();
        
-        return hour;
+        return day;
       
     }
     
