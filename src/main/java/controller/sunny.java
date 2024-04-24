@@ -151,16 +151,17 @@ public class sunny {
     private void updateRightView(int currentTime) {
         String root = WeatherApp.class.getResource("/Image and Icon/").toString();
         String night = root + "night/bg.png";
+        String day = root + "sunny/bg.png";
         
-        // Night
-        if( currentTime > 10 && currentTime < 24 ) {
+        if( currentTime > 18 && currentTime < 24 ) {            // Night
             rightView.setImage(new Image(night));
-        } 
+        } else if ( currentTime >= 0 && currentTime < 5 ) {     // After Midnight
+            rightView.setImage(new Image(night));
+        } else {                                                // Day
+            rightView.setImage(new Image(day));
+        }
         
-        // After Midnight
-        if( currentTime >= 0 && currentTime < 5 ) {
-            rightView.setImage(new Image(night));
-        } 
+        
     }
     
     
