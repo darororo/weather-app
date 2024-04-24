@@ -98,13 +98,13 @@ public class sunny {
     
     private void updateDailyForecast(apicon Country) throws Exception {
         JSONArray data = Country.getDailyForecast();
-        td1.setText(data.get(0).toString());
-        td2.setText(data.get(1).toString());
-        td3.setText(data.get(2).toString());
-        td4.setText(data.get(3).toString());
-        td5.setText(data.get(4).toString());
-        td6.setText(data.get(5).toString());
-        td7.setText(data.get(6).toString());
+        td1.setText(data.get(0).toString()+ "°C");
+        td2.setText(data.get(1).toString()+ "°C");
+        td3.setText(data.get(2).toString()+ "°C");
+        td4.setText(data.get(3).toString()+ "°C");
+        td5.setText(data.get(4).toString()+ "°C");
+        td6.setText(data.get(5).toString()+ "°C");
+        td7.setText(data.get(6).toString()+ "°C");
         
         String d1 = Country.getObjectCurrentDate().format(DateTimeFormatter.ofPattern("EEE"));
         String d2 = Country.getObjectCurrentDate().plusDays(1).format(DateTimeFormatter.ofPattern("EEE"));
@@ -150,7 +150,7 @@ public class sunny {
     
     private void updateRightView(int currentTime) {
         String root = WeatherApp.class.getResource("/Image and Icon/").toString();
-        String night = root + "rightNight.png";
+        String night = root + "night/bg.png";
         
         // Night
         if( currentTime > 10 && currentTime < 24 ) {
