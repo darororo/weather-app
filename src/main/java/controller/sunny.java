@@ -5,14 +5,18 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import weather.app.WeatherApp;
 
 public class sunny {
     @FXML Button searchCountry;
@@ -40,7 +44,7 @@ public class sunny {
     @FXML Label hour3;
     @FXML Label hour4;
     @FXML Label hour5;
-    @FXML Text th1;
+    @FXML Text th1;     // temperature of hour 1
     @FXML Text th2;
     @FXML Text th3;
     @FXML Text th4;
@@ -50,6 +54,8 @@ public class sunny {
     @FXML Text windSpeed;
     @FXML Text humidity;
     @FXML Text precip;
+    @FXML ImageView rightView;
+     
     
     
     
@@ -62,12 +68,11 @@ public class sunny {
     
     public void searchClicked() {
         try {  
-            
            
             System.out.println("Hello mom");
             String countryName = tfCountry.getText();
             apicon Country = new apicon(countryName);
-
+             
             updateGreetings(Country);
             updateTime(Country);
             updateDate(Country);
@@ -129,12 +134,31 @@ public class sunny {
         String h3 = Country.getObjectCurrentDate().plusHours(2).format(DateTimeFormatter.ofPattern("h a"));
         String h4 = Country.getObjectCurrentDate().plusHours(3).format(DateTimeFormatter.ofPattern("h a"));
         String h5 = Country.getObjectCurrentDate().plusHours(4).format(DateTimeFormatter.ofPattern("h a"));
+        
+        int currTime = Country.getObjectCurrentDate().getHour();
+        updateRightView(currTime);   
 
         hour2.setText(h2);
         hour3.setText(h3);
         hour4.setText(h4);
         hour5.setText(h5);
 
+    }
+  
+    
+    private void updateRightView(int currentTime) {
+        String root = WeatherApp.class.getResource("/Image and Icon/").toString();
+        String night = root + "rightNight.png";
+        
+        // Night
+        if( currentTime > 10 && currentTime < 24 ) {
+            rightView.setImage(new Image(night));
+        } 
+        
+        // After Midnight
+        if( currentTime >= 0 && currentTime < 5 ) {
+            rightView.setImage(new Image(night));
+        } 
     }
     
     
@@ -193,11 +217,5 @@ public class sunny {
     private void defaultGreetings() {
         greetings.setText("KONICHIWA");
     }
-    
-    private String shortDay(String date) {
-        String day = LocalDate.parse(date).format(DateTimeFormatter.ofPattern("EEEE"));
-        return day;
-    }
-
-    
+        
 }
