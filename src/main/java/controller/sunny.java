@@ -5,14 +5,18 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import weather.app.WeatherApp;
 
 public class sunny {
     @FXML Button searchCountry;
@@ -40,7 +44,7 @@ public class sunny {
     @FXML Label hour3;
     @FXML Label hour4;
     @FXML Label hour5;
-    @FXML Text th1;
+    @FXML Text th1;     // temperature of hour 1
     @FXML Text th2;
     @FXML Text th3;
     @FXML Text th4;
@@ -50,6 +54,9 @@ public class sunny {
     @FXML Text windSpeed;
     @FXML Text humidity;
     @FXML Text precip;
+    @FXML ImageView rightView;
+    @FXML Text city;
+     
     
     
     
@@ -62,12 +69,11 @@ public class sunny {
     
     public void searchClicked() {
         try {  
-            
            
             System.out.println("Hello mom");
             String countryName = tfCountry.getText();
             apicon Country = new apicon(countryName);
-
+             
             updateGreetings(Country);
             updateTime(Country);
             updateDate(Country);
@@ -78,6 +84,7 @@ public class sunny {
             updateHumidity(Country);
             updateWindSpeed(Country);
             updatePrecipitationProb(Country);
+            updateCity(Country);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -91,13 +98,13 @@ public class sunny {
     
     private void updateDailyForecast(apicon Country) throws Exception {
         JSONArray data = Country.getDailyForecast();
-        td1.setText(data.get(0).toString());
-        td2.setText(data.get(1).toString());
-        td3.setText(data.get(2).toString());
-        td4.setText(data.get(3).toString());
-        td5.setText(data.get(4).toString());
-        td6.setText(data.get(5).toString());
-        td7.setText(data.get(6).toString());
+        td1.setText(data.get(0).toString()+ "°C");
+        td2.setText(data.get(1).toString()+ "°C");
+        td3.setText(data.get(2).toString()+ "°C");
+        td4.setText(data.get(3).toString()+ "°C");
+        td5.setText(data.get(4).toString()+ "°C");
+        td6.setText(data.get(5).toString()+ "°C");
+        td7.setText(data.get(6).toString()+ "°C");
         
         String d1 = Country.getObjectCurrentDate().format(DateTimeFormatter.ofPattern("EEE"));
         String d2 = Country.getObjectCurrentDate().plusDays(1).format(DateTimeFormatter.ofPattern("EEE"));
@@ -119,22 +126,43 @@ public class sunny {
     
     private void updateHourlyForecast(apicon Country) throws Exception {
         JSONArray data = Country.getHourlyForecast();
-        th1.setText(data.get(0).toString());
-        th2.setText(data.get(1).toString());
-        th3.setText(data.get(2).toString());
-        th4.setText(data.get(3).toString());
-        th5.setText(data.get(4).toString());
+        th1.setText(data.get(0).toString() + " °C");
+        th2.setText(data.get(1).toString() + " °C");
+        th3.setText(data.get(2).toString() + " °C");
+        th4.setText(data.get(3).toString() + " °C");
+        th5.setText(data.get(4).toString() + " °C");
+        
 
         String h2 = Country.getObjectCurrentDate().plusHours(1).format(DateTimeFormatter.ofPattern("h a"));
         String h3 = Country.getObjectCurrentDate().plusHours(2).format(DateTimeFormatter.ofPattern("h a"));
         String h4 = Country.getObjectCurrentDate().plusHours(3).format(DateTimeFormatter.ofPattern("h a"));
         String h5 = Country.getObjectCurrentDate().plusHours(4).format(DateTimeFormatter.ofPattern("h a"));
+        
+        int currTime = Country.getObjectCurrentDate().getHour();
+        updateRightView(currTime);   
 
         hour2.setText(h2);
         hour3.setText(h3);
         hour4.setText(h4);
         hour5.setText(h5);
 
+    }
+  
+    
+    private void updateRightView(int currentTime) {
+        String root = WeatherApp.class.getResource("/Image and Icon/").toString();
+        String night = root + "night/bg.png";
+        String day = root + "sunny/bg.png";
+        
+        if( currentTime > 18 && currentTime < 24 ) {            // Night
+            rightView.setImage(new Image(night));
+        } else if ( currentTime >= 0 && currentTime < 5 ) {     // After Midnight
+            rightView.setImage(new Image(night));
+        } else {                                                // Day
+            rightView.setImage(new Image(day));
+        }
+        
+        
     }
     
     
@@ -178,6 +206,11 @@ public class sunny {
         precip.setText(prob + "%");
     }
     
+    private void updateCity(apicon Country) throws Exception {
+        JSONArray cap = (JSONArray) Country.getCountryJSON().get("capital");
+        String name = cap.get(0).toString();
+        city.setText(name);
+    }
    
     
     public void defaultTime() {
@@ -193,11 +226,5 @@ public class sunny {
     private void defaultGreetings() {
         greetings.setText("KONICHIWA");
     }
-    
-    private String shortDay(String date) {
-        String day = LocalDate.parse(date).format(DateTimeFormatter.ofPattern("EEEE"));
-        return day;
-    }
-
-    
+        
 }

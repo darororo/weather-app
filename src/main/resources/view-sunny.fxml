@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1400.0" style="-fx-background-color: #301153;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.sunny">
    <children>
-      <ImageView fx:id="rightView" fitHeight="756.0" fitWidth="509.0" layoutX="997.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="rightView" fitHeight="756.0" fitWidth="509.0" layoutX="896.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Image%20and%20Icon/18f50109029ade270f0759724a0c19f1.png" />
          </image>
@@ -24,7 +24,7 @@
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font>
       </Text>
-      <TextField id="tfCountry" fx:id="tfCountry" layoutX="332.0" layoutY="39.0" prefHeight="35.0" prefWidth="405.0" style="-fx-background-radius: 20px;" text="cambodia" />
+      <TextField id="tfCountry" fx:id="tfCountry" layoutX="332.0" layoutY="39.0" prefHeight="35.0" prefWidth="405.0" style="-fx-background-radius: 20px;" />
       <Button id="searchCountry" layoutX="750.0" layoutY="35.0" mnemonicParsing="false" onAction="#searchClicked" prefHeight="42.0" prefWidth="57.0" style="-fx-background-radius: 20px;">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="24.0">
@@ -47,7 +47,7 @@
                <image>
                </image>
             </ImageView>
-            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="hist" fitHeight="28.0" fitWidth="33.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Image%20and%20Icon/history%20(1).png" />
                </image>
@@ -71,7 +71,7 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td1" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36°">
+            <Text fx:id="td1" fill="WHITE" layoutX="23.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36.0°C " wrappingWidth="78.994140625">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -89,7 +89,7 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td2" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37°">
+            <Text fx:id="td2" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -107,7 +107,7 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td3" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37°">
+            <Text fx:id="td3" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -125,7 +125,7 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td4" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38°">
+            <Text fx:id="td4" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -138,12 +138,12 @@
                   <Image url="@Image%20and%20Icon/cloudy%20(4).png" />
                </image>
             </ImageView>
-            <Text fx:id="day5" fill="WHITE" layoutX="40.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fri">
+            <Text fx:id="day5" fill="WHITE" layoutX="38.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fri">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td5" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37°">
+            <Text fx:id="td5" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -156,12 +156,12 @@
                   <Image url="@Image%20and%20Icon/cloudy%20(4).png" />
                </image>
             </ImageView>
-            <Text fx:id="day6" fill="WHITE" layoutX="37.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sat">
+            <Text fx:id="day6" fill="WHITE" layoutX="36.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sat">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td6" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38°">
+            <Text fx:id="td6" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -179,7 +179,7 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="td7" fill="WHITE" layoutX="37.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38°">
+            <Text fx:id="td7" fill="WHITE" layoutX="23.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0°C">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
@@ -289,17 +289,17 @@
             </ImageView>
          </children>
       </Pane>
-      <Text fill="WHITE" layoutX="1048.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phnom Penh">
+      <Text fx:id="city" fill="WHITE" layoutX="1048.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phnom Penh">
          <font>
             <Font name="Arial Rounded MT Bold" size="33.0" />
          </font>
       </Text>
-      <ImageView fx:id="bgMain" fitHeight="297.0" fitWidth="278.0" layoutX="999.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bgMain" fitHeight="297.0" fitWidth="278.0" layoutX="994.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Image%20and%20Icon/—Pngtree—sun%20and%20cloud%203d%20summer_8392020.png" />
          </image>
       </ImageView>
-      <Pane layoutX="1140.0" layoutY="505.0" prefHeight="222.0" prefWidth="352.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+      <Pane layoutX="1040.0" layoutY="505.0" prefHeight="222.0" prefWidth="352.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
             <Text fill="#1c0339" layoutX="22.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOURLY FORECAST" wrappingWidth="191.103515625">
                <font>
@@ -318,9 +318,9 @@
                         <Image url="@Image%20and%20Icon/cloudy%20(4).png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="th1" fill="WHITE" layoutX="16.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38°">
+                  <Text fx:id="th1" fill="WHITE" layoutX="8.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0°C">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </Text>
                </children></Pane>
@@ -336,9 +336,9 @@
                         <Font name="Arial" size="15.0" />
                      </font>
                   </Label>
-                  <Text fx:id="th2" fill="WHITE" layoutX="15.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38°">
+                  <Text fx:id="th2" fill="WHITE" layoutX="8.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0°C">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </Text>
                </children></Pane>
@@ -354,9 +354,9 @@
                         <Font name="Arial" size="15.0" />
                      </font>
                   </Label>
-                  <Text fx:id="th3" fill="WHITE" layoutX="16.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37°">
+                  <Text fx:id="th3" fill="WHITE" layoutX="8.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37.0°C">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </Text>
                </children></Pane>
@@ -372,9 +372,9 @@
                         <Font name="Arial" size="15.0" />
                      </font>
                   </Label>
-                  <Text fx:id="th4" fill="WHITE" layoutX="15.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37°">
+                  <Text fx:id="th4" fill="WHITE" layoutX="8.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="37.0°C">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </Text>
                </children></Pane>
@@ -390,29 +390,29 @@
                         <Font name="Arial" size="15.0" />
                      </font>
                   </Label>
-                  <Text fx:id="th5" fill="WHITE" layoutX="16.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36°">
+                  <Text fx:id="th5" fill="WHITE" layoutX="8.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36.0°C">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                        <Font name="Arial Rounded MT Bold" size="15.0" />
                      </font>
                   </Text>
                </children></Pane>
          </children></Pane>
-      <Text id="cuurentTemp" fx:id="currentTemp" fill="WHITE" layoutX="1024.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.9°">
+      <Text id="cuurentTemp" fx:id="currentTemp" fill="WHITE" layoutX="905.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.9°C">
          <font>
-            <Font name="Arial Bold" size="74.0" />
+            <Font name="Arial Bold" size="80.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="1295.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostly Sunny">
-         <font>
-            <Font name="Arial" size="25.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="1295.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H:38 | L:27°">
+      <Text fill="WHITE" layoutX="1200.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mostly Sunny">
          <font>
             <Font name="Arial" size="25.0" />
          </font>
       </Text>
-      <Pane layoutX="1010.0" layoutY="505.0" prefHeight="223.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+      <Text fill="WHITE" layoutX="1200.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H:38.0° | L:27.0°">
+         <font>
+            <Font name="Arial" size="25.0" />
+         </font>
+      </Text>
+      <Pane layoutX="905.0" layoutY="505.0" prefHeight="223.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
          <children>
             <ImageView fitHeight="78.0" fitWidth="85.0" layoutX="21.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -424,9 +424,9 @@
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
             </Text>
-            <Text fill="#1c0339" layoutX="21.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38° / 37°">
+            <Text fill="#1c0339" layoutX="10.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="38.0° / 37.0°">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="20.0" />
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="#1c0339" layoutX="8.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARTLY CLOUDY" wrappingWidth="191.103515625">

@@ -40,6 +40,10 @@ public class apicon {
         return name;
     }
     
+    public JSONObject getCountryJSON(){
+        return Country;
+    }
+    
     public String getCurrentTime() {
         LocalTime lt = CurrentDate.toLocalTime();
         String hour = lt.format(DateTimeFormatter.ofPattern("hh:mm a"));
