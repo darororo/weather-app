@@ -2,32 +2,124 @@ package backend;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class apicon {
-    // TODO create class methods to avoid re-accessing the api server
+    // TODO create object methods to avoid re-accessing the api server
     
     private String CountryName;
     private JSONObject Country;
     private JSONObject Weather;
+    private LocalDateTime CurrentDate;
     
     // Create an object to avoid re-accessing the api server
     public apicon (String name) {
         CountryName = name;
         Country = getCountry(CountryName);
-        Weather = getWeather(Country);        
+        Weather = getWeather(Country);  
+        CurrentDate = setCurrentDate();
+        
     }
     
-    public double currentTemp () throws Exception {
-        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
-        
+    private LocalDateTime setCurrentDate() {
+        JSONObject current = (JSONObject) Weather.get("current");
+        String time = current.get("time").toString();
+        DateTimeFormatter dtf = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime currentDate = LocalDateTime.parse(time);
+        return currentDate;
+    }
+    
+    public String getCountryName() {
+        String name = CountryName.substring(0, 1).toUpperCase() + CountryName.substring(1, CountryName.length());
+        return name;
+    }
+    
+    public String getCurrentTime() {
+        LocalTime lt = CurrentDate.toLocalTime();
+        String hour = lt.format(DateTimeFormatter.ofPattern("hh:mm a"));
+        return hour;
+      
+    }
+    
+    public LocalDateTime getObjectCurrentDate() {
+        return CurrentDate;
+    }
+    
+    public String getCurrentDate() {  
+        return CurrentDate.format(DateTimeFormatter.ofPattern("EEEE, dd MMMM, yyyy")).toString();
+    }
+    
+    public String getCurrentDayOfWeek() {
+        JSONObject current = (JSONObject) Weather.get("current");
+        String time = current.get("time").toString();
+        LocalDateTime date = LocalDateTime.parse(time);
+        String day = date.getDayOfWeek().toString();
+       
+        return day;
+      
+    }
+    
+    
+    public double currentTemp() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); } 
         JSONObject current = (JSONObject) Weather.get("current");
         double temp = (double) current.get("temperature_2m");
-        
         return temp;
+    }
+    
+    public JSONArray getHourlyForecast() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }    
+        JSONObject hourly =  (JSONObject) Weather.get("hourly");
+        JSONArray forecast = (JSONArray) hourly.get("temperature_2m");
+        return forecast;
+    }
+    
+    public JSONArray getDailyForecast() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject daily =  (JSONObject) Weather.get("daily");
+        JSONArray forecast = (JSONArray) daily.get("temperature_2m_max");      
+        return forecast;
+    }
+    
+    public JSONArray getSunrise() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject daily =  (JSONObject) Weather.get("daily");
+        JSONArray sunrise = (JSONArray) daily.get("sunrise");       
+        return sunrise;
+    }
+    
+    public JSONArray getSunset() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject daily =  (JSONObject) Weather.get("daily");
+        JSONArray sunset = (JSONArray) daily.get("sunset");       
+        return sunset;
+    }
+    
+    public long getHumidity() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject curr =  (JSONObject) Weather.get("current");
+        long humidity = (long) curr.get("relative_humidity_2m");   
+        return humidity;
+    }
+    
+    public double getWindSpeed() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject curr =  (JSONObject) Weather.get("current");
+        double speed = (double) curr.get("wind_speed_10m");
+        return speed;
+    }
+    
+    public JSONArray getPrecipitationProb() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject data =  (JSONObject) Weather.get("hourly");
+        JSONArray prob = (JSONArray) data.get("precipitation_probability");       
+        return prob;
     }
     
     public static JSONObject getCountry(String counName) {
@@ -84,9 +176,9 @@ public class apicon {
             URL url = new URL("https://api.open-meteo.com/v1/forecast?"
                     + "latitude=" + latlng.get(0)
                     + "&longitude=" + latlng.get(1)
-                    + "&current=temperature_2m,precipitation"
-                    + "&hourly=temperature_2m"
-                    + "&daily=weather_code,apparent_temperature_max,precipitation_hours"
+                    + "&current=temperature_2m,precipitation,relative_humidity_2m,wind_speed_10m"
+                    + "&hourly=temperature_2m,precipitation_probability"
+                    + "&daily=weather_code,temperature_2m_max,precipitation_hours,sunrise,sunset"
                     + "&timezone=auto");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -163,5 +255,14 @@ public class apicon {
         JSONArray forecast = (JSONArray) daily.get("apparent_temperature_max");
        
         return forecast;
+    }
+    
+    public static JSONObject getDailyForecastObject (String countryName) throws Exception {
+        JSONObject country = getCountry(countryName);
+        if (country == null) { throw new Exception("ERROR " + countryName + " not found."); }
+
+        JSONObject weather = getWeather(country);
+        JSONObject daily =  (JSONObject) weather.get("daily");       
+        return daily;
     }
 }
