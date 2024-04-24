@@ -55,6 +55,7 @@ public class sunny {
     @FXML Text humidity;
     @FXML Text precip;
     @FXML ImageView rightView;
+    @FXML Text city;
      
     
     
@@ -83,6 +84,7 @@ public class sunny {
             updateHumidity(Country);
             updateWindSpeed(Country);
             updatePrecipitationProb(Country);
+            updateCity(Country);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -202,6 +204,11 @@ public class sunny {
         precip.setText(prob + "%");
     }
     
+    private void updateCity(apicon Country) throws Exception {
+        JSONArray cap = (JSONArray) Country.getCountryJSON().get("capital");
+        String name = cap.get(0).toString();
+        city.setText(name);
+    }
    
     
     public void defaultTime() {
