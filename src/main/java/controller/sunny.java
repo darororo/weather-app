@@ -126,11 +126,12 @@ public class sunny {
     
     private void updateHourlyForecast(apicon Country) throws Exception {
         JSONArray data = Country.getHourlyForecast();
-        th1.setText(data.get(0).toString());
-        th2.setText(data.get(1).toString());
-        th3.setText(data.get(2).toString());
-        th4.setText(data.get(3).toString());
-        th5.setText(data.get(4).toString());
+        th1.setText(data.get(0).toString() + " °C");
+        th2.setText(data.get(1).toString() + " °C");
+        th3.setText(data.get(2).toString() + " °C");
+        th4.setText(data.get(3).toString() + " °C");
+        th5.setText(data.get(4).toString() + " °C");
+        
 
         String h2 = Country.getObjectCurrentDate().plusHours(1).format(DateTimeFormatter.ofPattern("h a"));
         String h3 = Country.getObjectCurrentDate().plusHours(2).format(DateTimeFormatter.ofPattern("h a"));
