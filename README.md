@@ -20,6 +20,11 @@ To run this project, edit path of javafx lib in `nbactions file`:
 ```
 
 ## Examples of use
+![bg01](https://github.com/darororo/weather-app/assets/163483079/83c38262-e91e-44d4-979e-d85e52035337)
+
+![bg02](https://github.com/darororo/weather-app/assets/163483079/beac24a5-c64d-4f48-aaf5-675942bde2e6)
+
+
 
 ## Sources
 - Assets: [Sun](https://pin.it/4Ps3H7I6j) [BG01:Sun](https://pin.it/7iF66mO9S) [BG02:Night](https://pin.it/JNbOreQo5)
