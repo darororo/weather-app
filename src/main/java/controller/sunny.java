@@ -57,6 +57,7 @@ public class sunny {
     @FXML ImageView rightView;
     @FXML Text city;
     @FXML Text hltemp;
+    @FXML Text hltemp2;
     
     
     
@@ -219,6 +220,7 @@ public class sunny {
         System.out.println("Max temp: " + data.get(0));
         System.out.println("Min temp: " + data1.get(0));
         hltemp.setText("H:" + data.get(0).toString() + "°C | L:" + data1.get(0).toString() + "°C");
+        hltemp2.setText(data.get(0).toString() + "° / " + data1.get(0).toString() + "°");
     }
  
     public void defaultTime() {
