@@ -126,6 +126,13 @@ public class apicon {
         return prob;
     }
     
+    public JSONArray getMinTemp() throws Exception {
+        if (Country == null) { throw new Exception("ERROR " + CountryName + " not found."); }
+        JSONObject daily =  (JSONObject) Weather.get("daily");
+        JSONArray forecast = (JSONArray) daily.get("temperature_2m_min");
+        return forecast;
+    }
+    
     public static JSONObject getCountry(String counName) {
         JSONObject country = null;
         
@@ -182,7 +189,7 @@ public class apicon {
                     + "&longitude=" + latlng.get(1)
                     + "&current=temperature_2m,precipitation,relative_humidity_2m,wind_speed_10m"
                     + "&hourly=temperature_2m,precipitation_probability"
-                    + "&daily=weather_code,temperature_2m_max,precipitation_hours,sunrise,sunset"
+                    + "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_hours,sunrise,sunset"
                     + "&timezone=auto");
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
