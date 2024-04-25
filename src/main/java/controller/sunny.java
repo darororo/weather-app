@@ -56,7 +56,8 @@ public class sunny {
     @FXML Text precip;
     @FXML ImageView rightView;
     @FXML Text city;
-     
+    @FXML Text hltemp;
+    @FXML Text hltemp2;
     
     
     
@@ -85,6 +86,7 @@ public class sunny {
             updateWindSpeed(Country);
             updatePrecipitationProb(Country);
             updateCity(Country);
+            updateHLTemp(Country);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -211,8 +213,16 @@ public class sunny {
         String name = cap.get(0).toString();
         city.setText(name);
     }
-   
     
+    private void updateHLTemp(apicon Country) throws Exception {
+        JSONArray data = Country.getDailyForecast();
+        JSONArray data1 = Country.getMinTemp();
+        System.out.println("Max temp: " + data.get(0));
+        System.out.println("Min temp: " + data1.get(0));
+        hltemp.setText("H:" + data.get(0).toString() + "°C | L:" + data1.get(0).toString() + "°C");
+        hltemp2.setText(data.get(0).toString() + "° / " + data1.get(0).toString() + "°");
+    }
+ 
     public void defaultTime() {
         String dt = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm a"));
         mainTime.setText(dt);
