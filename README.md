@@ -13,7 +13,7 @@ This `project` allows students to get started with using Git and Github as a tea
 - JavaFX 22
 
 ## Setup
-To run this project, edit path of javafx lib in `nbactions file`:
+To run this project, edit path of javafx lib in `nbactions.xml`:
 ```Java
     <properties>
         <exec.vmArgs>--module-path <"url"> --add-modules javafx.controls,javafx.fxml</exec.vmArgs>
@@ -22,6 +22,7 @@ To run this project, edit path of javafx lib in `nbactions file`:
 ## Examples of use
 
 ## Sources
-- Assets: [Sun](https://pin.it/4Ps3H7I6j) [BG01:Sun](https://pin.it/7iF66mO9S) [BG02:Night](https://pin.it/JNbOreQo5)
+- All assets belong to their rightful owners.
+- Images: [Sun](https://pin.it/4Ps3H7I6j) [BG01:Sun](https://pin.it/7iF66mO9S) [BG02:Night](https://pin.it/JNbOreQo5)
 - Country: [REST Countries](https://restcountries.com/v3.1/name/)
 - Weather data: [Open-Meteo](https://open-meteo.com/en/docs)
