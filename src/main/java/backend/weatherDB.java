@@ -9,7 +9,7 @@ public class weatherDB {
             Connection c = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.2:3306/weatherinfo?zeroDateTimeBehavior=CONVERT_TO_NULL [root on Default schema]",
                 "root",
-                "meetmeinthedark"
+                "*****"
             );
         
             Statement statement = c.createStatement();
